@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.artikelfinder.MainControler">
+
+    <!-- Background Image -->
+    <ImageView fitHeight="400" fitWidth="800" preserveRatio="false">
+        <image>
+            <Image url="@../../../images/bg.png" />        </image>
+    </ImageView>
+
+    <!-- Your UI on top -->
+    <VBox alignment="CENTER" spacing="8">
+
+        <TextField fx:id="nounInput" maxWidth="200" prefHeight="25" prefWidth="200" promptText="Enter German noun" />
+
+        <Button maxWidth="200" onAction="#handleCheck" prefHeight="25" prefWidth="200" text="Find Artikel" />
+
+        <Label fx:id="resultLabel" maxWidth="200" prefHeight="25" prefWidth="200" style="-fx-text-fill: white; -fx-font-size: 16 px;" text="it will be here" />
+
+    </VBox>
+
+</StackPane>
