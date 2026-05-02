@@ -12,7 +12,7 @@
 
     <HBox alignment="CENTER" spacing="180">
 
-        <VBox spacing="35" alignment="CENTER_LEFT">
+        <VBox fx:id="loginForm" spacing="35" alignment="CENTER_LEFT">
             <VBox spacing="12">
                 <Label text="Sign in to"
                        style="-fx-font-size: 42px; -fx-font-weight: bold;"/>
@@ -35,10 +35,14 @@
             <Label text="Sign in"
                    style="-fx-font-size: 28px;"/>
 
-            <TextField promptText="Enter email or user name"
+            <TextField
+                    fx:id="usernameField"
+                    promptText="Enter email or user name"
                        prefWidth="330" prefHeight="55"/>
 
-            <PasswordField promptText="Password"
+            <PasswordField
+                    fx:id="passwordField"
+                    promptText="Password"
                            prefWidth="330" prefHeight="55"/>
 
             <Button fx:id="loginButton"
