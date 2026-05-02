@@ -15,7 +15,6 @@ public class HelloApplication extends Application {
         stage.setTitle("Artikrl finder !");
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.getIcons().add();
         stage.show();
     }
 }
