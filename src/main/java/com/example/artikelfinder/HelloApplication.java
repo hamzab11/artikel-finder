@@ -7,10 +7,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class ArtikelFinder extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ArtikelFinder.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1000, 750);
         stage.setTitle("Artikrl finder !");
         stage.setScene(scene);
