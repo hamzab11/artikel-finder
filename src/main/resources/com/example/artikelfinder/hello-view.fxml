@@ -4,23 +4,43 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.artikelfinder.MainControler">
+<StackPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.example.artikelfinder.MainControler"
+           style="-fx-background-color: #F5F5F5; -fx-background-radius: 15;">
 
-    <!-- Background Image -->
-    <ImageView fitHeight="400" fitWidth="800" preserveRatio="false">
-        <image>
-            <Image url="@../../../images/bg.png" />        </image>
-    </ImageView>
 
     <!-- Your UI on top -->
-    <VBox alignment="CENTER" spacing="8">
+      <VBox alignment="CENTER" spacing="12">
 
-        <TextField fx:id="nounInput" maxWidth="200" prefHeight="25" prefWidth="200" promptText="Enter German noun" />
 
-        <Button maxWidth="200" onAction="#handleCheck" prefHeight="25" prefWidth="200" text="Find Artikel" />
+                <HBox spacing="5"
+                alignment="CENTER">
 
-        <Label fx:id="resultLabel" maxWidth="200" prefHeight="25" prefWidth="200" style="-fx-text-fill: white; -fx-font-size: 16 px;" text="it will be here" />
+              <Button fx:id="saveButton" text="add And Save Word" prefWidth="195" maxWidth="195" prefHeight="60"
+                      style="-fx-background-color: #4F46E5;
+                           -fx-text-fill: black;
+                           -fx-font-size: 16 px;
+                           -fx-background-radius: 8;"/>
+                    <TextField fx:id="toAddNoun" promptText="write your new word " maxWidth="195" prefWidth="195" prefHeight="60" />
+              <ComboBox fx:id="ArtikelSwitcher" promptText="Chose Artikel" maxWidth="95" prefWidth="95" maxHeight="60" />
 
-    </VBox>
+
+              </HBox>
+
+              <TextField fx:id="nounInput" maxWidth="500" prefHeight="60" prefWidth="500" promptText="Enter German noun"
+                   style="-fx-text-fill: black; -fx-font-size: 16 px"/>
+
+              <Button fx:id="findartikel" maxWidth="500" onAction="#handleCheck" text="Find Artikel" prefWidth="500" prefHeight="60"
+                style="-fx-background-color: #4F46E5;
+                           -fx-text-fill: black;
+                           -fx-font-size: 16 px;
+                           -fx-background-radius: 8;"/>
+
+              <Label fx:id="resultLabel" maxWidth="500" prefHeight="25" prefWidth="500"
+               style="-fx-text-fill: black; -fx-font-size: 16 px; -fx-alignment: center;" text="it will be here"/>
+
+
+
+       </VBox>
 
 </StackPane>

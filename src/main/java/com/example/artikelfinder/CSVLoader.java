@@ -1,6 +1,7 @@
 package com.example.artikelfinder;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 public class CSVLoader {
@@ -15,7 +16,7 @@ public class CSVLoader {
             throw new RuntimeException("CSV file not found: /wordArticle.csv");
         }
 
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
 
             String line;
 
