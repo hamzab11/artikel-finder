@@ -16,7 +16,7 @@
                 <HBox spacing="5"
                 alignment="CENTER">
 
-              <Button fx:id="saveButton" text="add And Save Word" prefWidth="195" maxWidth="195" prefHeight="60"
+              <Button onAction="#save" fx:id="saveButton" text="add And Save Word" prefWidth="195" maxWidth="195" prefHeight="60"
                       style="-fx-background-color: #4F46E5;
                            -fx-text-fill: black;
                            -fx-font-size: 16 px;

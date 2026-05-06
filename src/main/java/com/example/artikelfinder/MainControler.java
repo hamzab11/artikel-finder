@@ -1,14 +1,21 @@
 package com.example.artikelfinder;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.util.HashMap;
 
 public class MainControler {
+    @FXML
     public Button findartikel;
+    @FXML
+    public ComboBox <String> ArtikelSwitcher;
+    @FXML
+    public TextField toAddNoun;
     @FXML
     private TextField nounInput;
 
@@ -19,11 +26,10 @@ public class MainControler {
     @FXML
 
 
-
-
     public void initialize(){
         AnimationManager.nodeHover(saveButton);
         AnimationManager.nodeHover(findartikel);
+        ArtikelSwitcher.getItems().addAll("der","die","das");
 
     }
 
@@ -52,8 +58,29 @@ public class MainControler {
         } catch (Exception e) {
             resultLabel.setText(e.getMessage());
         }
+        String newNoun = nounInput.getText().trim();
+        newNoun = newNoun.toLowerCase();
+        String newArtikel = ArtikelSwitcher.getValue();
+        if (newNoun.isEmpty()) {
+            resultLabel.setText("Please enter a noun.");
+        }
+
+
+
 //
     }
 
 
+    public void save() {
+        String noun = toAddNoun.getText().trim();
+        noun = noun.toLowerCase();
+        String artikel = ArtikelSwitcher.getValue();
+        artikel = artikel.toLowerCase();
+        if (artikel.isEmpty()) {
+            resultLabel.setText("Please enter a noun.");
+        }else  {
+            CsvWriter.csvEditor(noun,artikel);
+        }
+
+    }
 }
