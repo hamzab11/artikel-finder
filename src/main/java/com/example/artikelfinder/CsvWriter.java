@@ -8,7 +8,7 @@ public class CsvWriter {
 
         try {
 
-            FileWriter fw = new FileWriter("/wordArticle.csv");
+            FileWriter fw = new FileWriter("src/main/resources/wordArticle.csv", true);
             fw.write(noun + "," +artikel+ "\n");
             fw.close();
         } catch (Exception e) {

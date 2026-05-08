@@ -1,12 +1,8 @@
 package com.example.artikelfinder;
 
-import javafx.animation.FadeTransition;
-import javafx.animation.ParallelTransition;
-import javafx.animation.ScaleTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,8 +14,10 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class LoginControler {
-
+public class LoginControler extends UiHelper {
+    @FXML
+    public Label dateValueLabel;
+    public Label timeValueLabel;
     @FXML
     private VBox loginForm;
 
@@ -38,6 +36,15 @@ public class LoginControler {
     public void initialize() {
         animateForm();
         AnimationManager.nodeHover(loginButton);
+        TimeAndDateManager timeAndDateManager = new TimeAndDateManager();
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1),event -> {
+            timeValueLabel.setText(timeAndDateManager.getCurrentTime());
+            dateValueLabel.setText(timeAndDateManager.getCurrentDate());
+        })
+        );
+                timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+
     }
 
     // ✨ دخول الفورم
@@ -55,8 +62,6 @@ public class LoginControler {
     }
 
 
-
-
     @FXML
     private void handleLogin() throws IOException {
         String username = usernameField.getText().trim();
@@ -64,9 +69,7 @@ public class LoginControler {
 
         if (username.equals("admin") && password.equals("1234")) {
 
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/com/example/artikelfinder/hello-view.fxml")
-            );
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/artikelfinder/hello-view.fxml"));
 
             Stage mainStage = new Stage();
             Scene scene = new Scene(loader.load(), 1000, 750);
@@ -80,8 +83,11 @@ public class LoginControler {
             loginStage.close();
 
         } else {
-            AnimationManager.shake(fieldLog,50,-5,5,10,true);
-            fieldLog.setText("Wrong username or password!");
+            AnimationManager.shake(fieldLog, 50, -5, 5, 10, true);
+            //fieldLog.setText("Wrong username or password!")
+            displayText(fieldLog, "Wrong username or password!")
+
+            ;
 
         }
     }
