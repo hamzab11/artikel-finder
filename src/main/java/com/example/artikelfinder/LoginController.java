@@ -1,6 +1,7 @@
 package com.example.artikelfinder;
 
 import javafx.animation.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,9 +15,10 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class LoginControler extends UiHelper {
+public class LoginController extends UiHelper {
     @FXML
     public Label dateValueLabel;
+
     public Label timeValueLabel;
     @FXML
     private VBox loginForm;
@@ -69,10 +71,10 @@ public class LoginControler extends UiHelper {
 
         if (username.equals("admin") && password.equals("1234")) {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/artikelfinder/hello-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/artikelfinder/main-view.fxml"));
 
             Stage mainStage = new Stage();
-            Scene scene = new Scene(loader.load(), 1000, 750);
+            Scene scene = new Scene(loader.load(), 520, 280);
 
             mainStage.setTitle("Artikel Finder");
             mainStage.setScene(scene);
@@ -89,6 +91,26 @@ public class LoginControler extends UiHelper {
 
             ;
 
+        }
+    }
+
+    public void openRegisterWindow(ActionEvent actionEvent) {
+        try {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/artikelfinder/register-view.fxml"));
+        Stage registerStage = new Stage();
+        Scene scene = new Scene(loader.load(),300,500);
+        registerStage.setTitle("Sign Up");
+        registerStage.setScene(scene);
+        registerStage.setResizable(false);
+            Stage loginStage = (Stage) loginButton.getScene().getWindow();
+            loginStage.close();
+
+        registerStage.show();
+
+
+        }catch (IOException e) {
+            displayText(fieldLog, "Error!");
         }
     }
 }

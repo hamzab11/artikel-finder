@@ -6,7 +6,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class MainControler extends UiHelper {
+public class MainController extends UiHelper {
 
     @FXML
     public Button findartikel;
@@ -183,7 +183,8 @@ public class MainControler extends UiHelper {
                 germanNoun.substring(0, 1).toUpperCase()
                         + germanNoun.substring(1).toLowerCase();
 
-        String artikel = DictionaryManager.getArtikel(formatted);
+       // String artikel = DictionaryManager.getArtikel(formatted);
+        String artikel = FirestoreService.getArtikel(formatted);
 
         if (artikel != null) {
            // resultLabel.setText("Artikel: " + artikel + " " + formatted);
@@ -218,6 +219,7 @@ public class MainControler extends UiHelper {
 
         // 🔥 reload dictionary after adding new word
         DictionaryManager.reloadDictionary();
+        FirestoreService.saveWord(noun, artikel);
 
         //resultLabel.setText("Word saved: " + artikel + " " + noun);
         displayText(resultLabel,"Word saved: " + noun + " " + artikel);
