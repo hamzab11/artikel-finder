@@ -23,21 +23,33 @@ public class RegisterController extends UiHelper{
     public Label registerLabel;
 
 
+
+
+
     public void handleRegister(ActionEvent actionEvent) {
+        try {
+            String email = extractText(emailField);
+            String confirmEmail = extractText(confirmEmailField);
+            String password =  extractText(passwordField);
+            String confirmPassword = extractText(confirmPasswordField);
+            String eResult = RegisterService.checkEmail(email,confirmEmail);
+            String pResult = RegisterService.checkPassword(password,confirmPassword);
+            System.out.println("every thing is ok");
+        }catch (Exception e){
+            displayText(registerLabel,"error");
+        }
     }
 
     public void backToLogin(ActionEvent actionEvent) {
        try {
-           FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
-           Stage stage = new Stage();
-           Scene scene = new Scene(fxmlLoader.load(), 1440, 900);
-           stage.setTitle("Artikerl finder");
-           stage.setScene(scene);
-           stage.setResizable(false);
-           stage.show();
+          SceneManager.switchScene(actionEvent, "login-view.fxml");
        }catch (Exception e){
            displayText(registerLabel, "Error!");
        }
 
     }
+
+
+
+
 }

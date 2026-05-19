@@ -4,6 +4,7 @@ import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -96,18 +97,7 @@ public class LoginController extends UiHelper {
 
     public void openRegisterWindow(ActionEvent actionEvent) {
         try {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/artikelfinder/register-view.fxml"));
-        Stage registerStage = new Stage();
-        Scene scene = new Scene(loader.load(),300,500);
-        registerStage.setTitle("Sign Up");
-        registerStage.setScene(scene);
-        registerStage.setResizable(false);
-            Stage loginStage = (Stage) loginButton.getScene().getWindow();
-            loginStage.close();
-
-        registerStage.show();
-
+            SceneManager.switchScene(actionEvent, "register-view.fxml");
 
         }catch (IOException e) {
             displayText(fieldLog, "Error!");
